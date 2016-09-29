@@ -34,9 +34,17 @@ public class MainActivity extends AppCompatActivity {
         calcBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float percentage = Float.parseFloat(percentageTxt.getText().toString());
-                float decimal = percentage/100;
-                float total = decimal * Float.parseFloat(numberTxt.getText().toString());
+                float percentage;
+                float decimal;
+                float total=0;
+                if (percentageTxt.getText().toString().equals("") || numberTxt.getText().toString().equals("")){
+                    total       = 0;
+                }else {
+                    percentage = Float.parseFloat(percentageTxt.getText().toString());
+                    decimal = percentage / 100;
+                    total = decimal * Float.parseFloat(numberTxt.getText().toString());
+
+                }
                 totalTextView.setText(Float.toString(total));
             }
         });
@@ -46,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(startSecretActivity);
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
